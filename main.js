@@ -5,6 +5,6 @@ function setup() {
 }
 
 function draw() {
-  walker.step();
+  walker.stepLikelyTowardsMouse();
   walker.display();
 }

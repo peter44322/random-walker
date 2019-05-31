@@ -5,7 +5,6 @@ function RandomWalker() {
 
 RandomWalker.prototype.display = function() {
   stroke(0);
-  //strokeWeight(60);
   point(this.x, this.y);
 };
 
@@ -26,4 +25,25 @@ RandomWalker.prototype.step = function() {
       this.y--;
       break;
   }
+};
+
+RandomWalker.prototype.stepLikelyTowardsMouse = function() {
+  let choice = random(1);
+
+  if (choice < 0.125) {
+    this.x++;
+  } else if (choice < 0.25) {
+    this.x--;
+  } else if (choice < 0.375) {
+    this.y++;
+  } else if (choice < 0.5) {
+    this.y--;
+  } else {
+    this.moveTowardMouse();
+  }
+};
+
+RandomWalker.prototype.moveTowardMouse = function() {
+  this.x > mouseX ? this.x-- : this.x++;
+  this.y > mouseY ? this.y-- : this.y++;
 };
